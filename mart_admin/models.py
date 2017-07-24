@@ -12,7 +12,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     product_name=models.CharField(max_length=150)
-    description=models.CharField(max_length=500)
+    description=models.TextField(default='Default product description')
     price=models.IntegerField()
     product_image=models.FileField()
     category=models.ForeignKey(Category,on_delete=models.CASCADE)

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h3> Add Categories </h3>
+<form method="post" action="" role="form" enctype="multipart/form-data">
+{% csrf_token %}
+{% include 'mart_admin/form_template.html' %}
+
+<button type="submit">Submit</button>
+</form>
+</body>
+</html>

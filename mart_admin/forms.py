@@ -7,11 +7,12 @@ class CategoryForm(forms.ModelForm):
         fields=['category_name']
 
 class ProductForm(forms.ModelForm):
+    category=forms.ModelChoiceField(queryset=Category.objects.all())
     class Meta:
         model=Product
-        fields=['product_name','description','price','product_image','product_quantity']
+        fields=['product_name','description','price','category','product_image','product_quantity']
 
-    category=forms.ModelChoiceField(queryset=Category.objects.all())
+    
     
 class CustomerForm(forms.ModelForm):
     class Meta:

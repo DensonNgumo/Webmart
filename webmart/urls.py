@@ -19,5 +19,6 @@ from mart_admin import views as adminViews
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^test/$',adminViews.test,name='test'),
+    url(r'^add_products/$',adminViews.addProducts,name='add_products'),
+    url(r'^add_categories/$',adminViews.addCategories,name='add_categories'),
 ]
