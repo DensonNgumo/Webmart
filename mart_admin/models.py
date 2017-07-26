@@ -17,6 +17,7 @@ class Product(models.Model):
     product_image=models.FileField()
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
     product_quantity=models.IntegerField()
+    
 
     def __str__(self):
         return self.product_name

@@ -19,6 +19,10 @@
 <a href="#">
 <img src="{{ product.product_image.url }}" class="img-responsive"/>
 </a>
+<label><strong>Price(Kshs):</strong> {{product.price}}</label>&nbsp;
+<label><b>Stock:</b> {{product.product_quantity}}</label>
+<a href="#" class="btn btn-default" onclick="incrementCartCounter()">Add To Cart</a>
+<a href="#" class="btn btn-default">Add To Wishlist</a>
 </div>
 </div>
 {% endfor %}
