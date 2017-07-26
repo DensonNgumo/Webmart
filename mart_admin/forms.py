@@ -1,6 +1,7 @@
 from django import forms
 from .models import Category,Customer,Product,PaymentDetails
 
+
 class CategoryForm(forms.ModelForm):
     class Meta:
         model=Category

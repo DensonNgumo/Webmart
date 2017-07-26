@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
 <h3> Add Categories </h3>
 <form method="post" action="" role="form" enctype="multipart/form-data">
 {% csrf_token %}
@@ -11,5 +7,4 @@
 
 <button type="submit">Submit</button>
 </form>
-</body>
-</html>
+{% endblock %}
