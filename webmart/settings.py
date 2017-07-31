@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'mart_admin.apps.MartAdminConfig',
     'customer_mart.apps.CustomerMartConfig',
+    'cart.apps.CartConfig',
     
 ]
 
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -117,6 +119,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+#cookie-based sessions
+SESSION_ENGINE='django.contrib.sessions.backends.signed_cookies'
+SESSION_COOKIE_HTTPONLY='True'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

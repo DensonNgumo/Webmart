@@ -42,3 +42,37 @@ function loadCartValue(){
     }
     
 }
+
+
+var ProductsPage = {
+    init: function() {
+        this.$container = $('.testContainer');
+        this.render();
+        this.bindEvents();
+    },
+
+    render: function() {
+
+    },
+
+    bindEvents: function() {
+        $('.btn-add', this.$container).on('click', function(e) {
+            e.preventDefault();
+
+            var self = $(this);
+            var url = $(this).attr('href');
+            $.getJSON(url, function(result) {
+                if (result.success) {
+                    $('.btn-add', self).css({color:'red'});
+                }
+            });
+
+            return false;
+        });
+    }
+};
+
+$(document).ready(function() {
+    ProductsPage.init();
+    
+});

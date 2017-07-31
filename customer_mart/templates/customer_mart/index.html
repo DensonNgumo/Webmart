@@ -13,15 +13,15 @@
 <!--Products-->
 <div class="col-sm-4 col-md-6">
 {% for product in products %}
-<div class="col-md-6">
+<div class="col-md-6 ">
 <h3>{{product.product_name}}</h3>
-<div class="thumbnail">
+<div class="thumbnail testContainer">
 <a href="#">
 <img src="{{ product.product_image.url }}" class="img-responsive"/>
 </a>
 <label><strong>Price(Kshs):</strong> {{product.price}}</label>&nbsp;
 <label><b>Stock:</b> {{product.product_quantity}}</label>
-<a href="#" class="btn btn-default" onclick="incrementCartCounter()">Add To Cart</a>
+<a href="{% url 'test' product.id %}" class="btn btn-default btn-add" onclick="incrementCartCounter()">Add To Cart</a>
 <a href="#" class="btn btn-default">Add To Wishlist</a>
 </div>
 </div>

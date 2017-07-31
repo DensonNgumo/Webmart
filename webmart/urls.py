@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from mart_admin import views as adminViews
 from customer_mart import views as customerViews
+from cart import views as cartViews
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,6 +27,8 @@ urlpatterns = [
     url(r'^add_categories/$',adminViews.addCategories,name='add_categories'),
     url(r'^$',customerViews.index,name='home'),
     url(r'^products/cat=/(?P<category_id>[0-9]+)/$',customerViews.productsByCategory,name='select_products'),
+    url(r'^test/(?P<product_id>[0-9]+)/$',customerViews.addToCart,name='test'),
+    url(r'^test/$',customerViews.test,name='testPage'),
 ]
 
 if settings.DEBUG:
