@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'crispy_forms',
     'mart_admin.apps.MartAdminConfig',
     'customer_mart.apps.CustomerMartConfig',
@@ -129,6 +133,10 @@ SESSION_COOKIE_HTTPONLY='True'
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+SITE_ID = 1
+
+import os
+SETTINGS_PATH= os.path.dirname(os.path.dirname(__file__))
 
 if DEBUG:
     STATIC_ROOT=os.path.join(BASE_DIR,"static","static-only")

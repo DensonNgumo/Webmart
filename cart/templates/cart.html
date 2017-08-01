@@ -1,0 +1,10 @@
+{% extends 'customer_mart/base.html' %}
+
+{% block content %}
+<ul>
+{% for product in products %}
+<li>{{product.product_name}} <a href="{% url 'remove_from_cart' product.id %}" onclick="decrementCartCounter()">Remove From Cart</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

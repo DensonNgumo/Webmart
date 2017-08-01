@@ -1,0 +1,8 @@
+body
+{
+  background: url('../images/background.png');
+}
+nav img
+{
+    max-height: 50px;
+}

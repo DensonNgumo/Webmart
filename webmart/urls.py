@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -23,12 +23,14 @@ from cart import views as cartViews
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^add_products/$',adminViews.addProducts,name='add_products'),
     url(r'^add_categories/$',adminViews.addCategories,name='add_categories'),
     url(r'^$',customerViews.index,name='home'),
     url(r'^products/cat=/(?P<category_id>[0-9]+)/$',customerViews.productsByCategory,name='select_products'),
-    url(r'^test/(?P<product_id>[0-9]+)/$',customerViews.addToCart,name='test'),
-    url(r'^test/$',customerViews.test,name='testPage'),
+    url(r'^cart/add/(?P<product_id>[0-9]+)/$',cartViews.addToCart,name='add_to_cart'),
+    url(r'^cart/remove/(?P<product_id>[0-9]+)/$',cartViews.removeFromCart,name='remove_from_cart'),
+    url(r'^cart/$',cartViews.loadCart,name='cart_items'),
 ]
 
 if settings.DEBUG:

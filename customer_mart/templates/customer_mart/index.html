@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'customer_mart/base.html' %}
 
 {% block content %}
 <div class="row">
@@ -21,7 +21,7 @@
 </a>
 <label><strong>Price(Kshs):</strong> {{product.price}}</label>&nbsp;
 <label><b>Stock:</b> {{product.product_quantity}}</label>
-<a href="{% url 'test' product.id %}" class="btn btn-default btn-add" onclick="incrementCartCounter()">Add To Cart</a>
+<a href="{% url 'add_to_cart' product.id %}" class="btn btn-default btn-add" onclick="incrementCartCounter()">Add To Cart</a>
 <a href="#" class="btn btn-default">Add To Wishlist</a>
 </div>
 </div>
