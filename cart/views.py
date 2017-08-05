@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,JsonResponse
 from django.urls import reverse
+from django.template import loader,RequestContext
+import json
 from mart_admin.models import Product,Customer,Category
 
 
@@ -11,7 +13,7 @@ def addToCart(request,product_id):
         productList=request.session['productList']
         productList.append(product_id)
         request.session['productList']=productList
-             
+
     return HttpResponseRedirect(reverse('home'))
 
 def loadCart(request):
