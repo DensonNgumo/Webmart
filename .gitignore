@@ -1,3 +1,4 @@
 /static/media
 /static/static/images
 /static/static-only/images
+db.sqlite3
