@@ -16,5 +16,7 @@ def productsByCategory(request,category_id):
     return render(request,'customer_mart/index.html',{'products':products,'categories':categories})
 
 
-    
+def details(request,product_id):
+    product=get_object_or_404(Product,pk=product_id)
+    return render(request,'customer_mart/details.html',{'product':product})
    

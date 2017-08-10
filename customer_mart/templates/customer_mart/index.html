@@ -17,13 +17,18 @@
             <div class="col-md-6 ">
             <h3>{{product.product_name}}</h3>
             <div class="thumbnail testContainer">
-            <a href="#">
+            <a href="{% url 'details' product.id %}">
             <img src="{{ product.product_image.url }}" class="img-responsive"/>
             </a>
             <label><strong>Price(Kshs):</strong> {{product.price}}</label>&nbsp;
-            <label><b>Stock:</b> {{product.product_quantity}}</label>
-            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-default btn-add" role="button">Add To Cart</a>
-            <a href="#" class="btn btn-default">Add To Wishlist</a>
+            
+            {% if product.product_quantity == 0 %}
+                <label><b>Stock:</b> Out of Stock </label>
+            {% else %}
+                <label><b>Stock:</b> {{product.product_quantity}}</label>
+                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-default btn-add" role="button">Add To Cart</a>
+                <a href="#" class="btn btn-default">Add To Wishlist</a>
+            {% endif %}
             </div>
             </div>
         {% endfor %}

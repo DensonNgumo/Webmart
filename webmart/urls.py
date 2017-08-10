@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^add_products/$',adminViews.addProducts,name='add_products'),
     url(r'^add_categories/$',adminViews.addCategories,name='add_categories'),
     url(r'^$',customerViews.index,name='home'),
+    url(r'^details/(?P<product_id>[0-9]+)/$',customerViews.details,name='details'),
     url(r'^products/cat=/(?P<category_id>[0-9]+)/$',customerViews.productsByCategory,name='select_products'),
     url(r'^cart/add/(?P<product_id>[0-9]+)/$',cartViews.addToCart,name='add_to_cart'),
     url(r'^cart/remove/(?P<product_id>[0-9]+)/$',cartViews.removeFromCart,name='remove_from_cart'),

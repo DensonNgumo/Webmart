@@ -1,0 +1,24 @@
+{% extends 'customer_mart/base.html' %}
+
+{% block content %}
+
+
+
+<div>
+<h1>{{product.product_name}} -<small>{{product.category.category_name}}</h1>
+<h3>Price: {{product.price}}
+{% if product.product_quantity == 0 %}
+<br/> Available Stock: Out of Stock </h3>
+{% else %}
+<br/> Available Stock: {{ product.product_quantity }}</h3>
+{% endif %}
+<hr/>
+<img src="{{ product.product_image.url }}" class="img-responsive" />
+<h2> Product Description </h2>
+<p>{{ product.description }} </p>
+
+</div>
+
+
+
+{% endblock %}

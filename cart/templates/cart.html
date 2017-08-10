@@ -3,7 +3,10 @@
 {% block content %}
 <ul>
 {% for product in products %}
-<li>{{product.product_name}} <a href="{% url 'remove_from_cart' product.id %}" onclick="decrementCartCounter()">Remove From Cart</a></li>
+<li>{{product.product_name}} <a href="{% url 'remove_from_cart' product.id %}" onclick="decrementCartCounter()">Remove From Cart</a>
+<br/>Price: {{product.price}}
+<br/>Stock: {{product.product_quantity}}
+</li>
 {% endfor %}
 </ul>
 

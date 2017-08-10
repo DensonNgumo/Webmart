@@ -24,7 +24,7 @@ def loadCart(request):
             product=Product.objects.get(pk=product_id)
             products.append(product)
 
-  
+    
     return render(request,'cart.html',{'products':products})
 
 def removeFromCart(request,product_id):
