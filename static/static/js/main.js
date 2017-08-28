@@ -1,59 +1,43 @@
-var counter;
-
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-
-function incrementCartCounter(){
-    counter++;
-    document.getElementById("cart_count").innerHTML=counter;
-    setCookie("cartItemCount",counter,1)
-   
-}
+var counter=0;
 
 function loadCartValue(){
-    var value=getCookie("cartItemCount");
-    if(value!=""){
+
+    var value=localStorage.getItem('cartItemCount')
+    if(value){
         counter=value;
         document.getElementById("cart_count").innerHTML=value;
     }
     else{
         counter=0;
     }
+
     
 }
 
-function decrementCartCounter(){
-    counter=counter-1;
+document.addEventListener('DOMContentLoaded', function() {
+    loadCartValue();
+}, false);
+
+function incrementCartCounter(){
+    counter++;
+    console.log(counter);
+    localStorage.setItem('cartItemCount',counter);
+    //setCookie("cartItemCount",counter,1)
     document.getElementById("cart_count").innerHTML=counter;
-    setCookie("cartItemCount",counter,1)
+    
    
 }
 
-$('.btn-add').click(function(e){
-    incrementCartCounter();
-    //e.preventDefault();
-        
+
+function decrementCartCounter(item_count){
+    counter=counter-item_count;
+    localStorage.setItem('cartItemCount',counter);
+    document.getElementById("cart_count").innerHTML=counter;
+   
+}
+
+$('.btn-add').click(function(){
+    incrementCartCounter();        
 });
 
 

@@ -32,6 +32,9 @@ urlpatterns = [
     url(r'^cart/add/(?P<product_id>[0-9]+)/$',cartViews.addToCart,name='add_to_cart'),
     url(r'^cart/remove/(?P<product_id>[0-9]+)/$',cartViews.removeFromCart,name='remove_from_cart'),
     url(r'^cart/$',cartViews.loadCart,name='cart_items'),
+    url(r'^checkout_items/$',cartViews.proceedToCheckout,name='go_to_checkout'),
+    url(r'^checkout/$',cartViews.checkout,name='checkout'),
+    url(r'^clear_cart/$',cartViews.clearCart,name='clear_cart'),
 ]
 
 if settings.DEBUG:

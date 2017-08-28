@@ -2,12 +2,16 @@
 
 {% block content %}
 <ul>
-{% for product in products %}
-<li>{{product.product_name}} <a href="{% url 'remove_from_cart' product.id %}" onclick="decrementCartCounter()">Remove From Cart</a>
-<br/>Price: {{product.price}}
-<br/>Stock: {{product.product_quantity}}
-</li>
-{% endfor %}
+    {% if not products %}
+    <h3>No products added to cart</h3>
+    {% else %}
+    {% for product in products %}
+    <li>{{product.product_name}} <a href="{% url 'remove_from_cart' product.id %}" onclick="decrementCartCounter(1)">Remove From Cart</a>
+    <br/>Price: {{product.price}}
+    <br/>Stock: {{product.product_quantity}}
+    </li>
+    {% endfor %}
 </ul>
-
+<a class="btn btn-primary" href="{% url 'go_to_checkout' %}">Proceed to checkout</a>
+{% endif %}
 {% endblock %}

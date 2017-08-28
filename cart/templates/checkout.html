@@ -1,0 +1,47 @@
+{% extends 'customer_mart/base.html' %}
+
+{% block content %}
+{% if message %}
+<h3>{{message}}</h3>
+<h3>Remaining stock:{{stock}}</h3>
+{% else %}
+<ul>
+{% for product in products %}
+<li>{{product.product_name}} 
+<br/>Price: {{product.price}}
+<br/>Stock: {{product.product_quantity}}
+</li>
+{% endfor %}
+</ul>
+
+<label>Total: {{total}}</label>
+<a id="btn-checkout" href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
+{% endif %}
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $('#btn-checkout').click(function(){
+    alert('here');
+    $.ajax({
+        url:'/clear_cart/',
+        data:{
+            'checkout_complete':True
+        },
+        dataType:'json',
+        success:function(data){
+            if(data.success){
+                alert('works');
+                counter=0;
+                localStorage.setItem('cartItemCount',counter);
+                document.getElementById("cart_count").innerHTML=counter;
+            }
+        }
+    });
+    
+
+});
+</script>
+
+{% endblock %}
