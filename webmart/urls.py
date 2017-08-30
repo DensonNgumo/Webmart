@@ -24,6 +24,7 @@ from cart import views as cartViews
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^profiles/$',customerViews.editProfile,name='profile'),
     url(r'^add_products/$',adminViews.addProducts,name='add_products'),
     url(r'^add_categories/$',adminViews.addCategories,name='add_categories'),
     url(r'^$',customerViews.index,name='home'),
@@ -34,7 +35,6 @@ urlpatterns = [
     url(r'^cart/$',cartViews.loadCart,name='cart_items'),
     url(r'^checkout_items/$',cartViews.proceedToCheckout,name='go_to_checkout'),
     url(r'^checkout/$',cartViews.checkout,name='checkout'),
-    url(r'^clear_cart/$',cartViews.clearCart,name='clear_cart'),
 ]
 
 if settings.DEBUG:

@@ -3,7 +3,6 @@
 {% block content %}
 {% if message %}
 <h3>{{message}}</h3>
-<h3>Remaining stock:{{stock}}</h3>
 {% else %}
 <ul>
 {% for product in products %}
@@ -23,22 +22,9 @@
 {% block script %}
 <script type="text/javascript">
     $('#btn-checkout').click(function(){
-    alert('here');
-    $.ajax({
-        url:'/clear_cart/',
-        data:{
-            'checkout_complete':True
-        },
-        dataType:'json',
-        success:function(data){
-            if(data.success){
-                alert('works');
-                counter=0;
-                localStorage.setItem('cartItemCount',counter);
-                document.getElementById("cart_count").innerHTML=counter;
-            }
-        }
-    });
+        counter=0;
+        localStorage.setItem('cartItemCount',counter);
+        document.getElementById("cart_count").innerHTML=counter;
     
 
 });

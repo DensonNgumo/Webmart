@@ -34,7 +34,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Webart</a>
+      <a class="navbar-brand" href="#">Webmart</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,11 +53,13 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
-          
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Signup</a></li>
-            
-            <li><a href="#">Logout</a></li>
+          {% if not request.user.is_authenticated %}
+            <li><a href="{% url 'account_login' %}">Login</a></li>
+            <li><a href="{% url 'account_signup' %}">Signup</a></li>
+            {% else %}
+            <li><a href="{% url 'profile' %}">Account Profile</a></li>
+            <li><a href="{% url 'account_logout' %}">Logout</a></li>
+            {% endif %}
             
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
@@ -69,7 +71,7 @@
         <img src="{% static '/images/cart.png' %}"/>
  
         </li>
-        <li><a href="{% url 'cart_items' %}" id="cart_count">0</a></li>
+        <li><a href="{% url 'cart_items' %}" id="cart_count"></a></li>
         
       </ul>
     </div><!-- /.navbar-collapse -->

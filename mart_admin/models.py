@@ -47,3 +47,12 @@ class PaymentDetails(models.Model):
     order_date_time=models.DateTimeField(auto_now=True)
     payment_method=models.CharField(max_length=10,choices=PAYMENT_METHODS)
 
+class StockDetails(models.Model):
+    class Meta:
+        verbose_name_plural="outOfStockProducts"
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    date=models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.product.product_name + " out of stock."
+

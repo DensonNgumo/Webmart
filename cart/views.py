@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect,JsonResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from mart_admin.models import Product,Customer,Category
+from mart_admin.models import Product,Customer,Category,StockDetails
 
 
 def addToCart(request,product_id):
@@ -46,12 +46,8 @@ def proceedToCheckout(request):
 
     return render(request,'checkout.html',{'products':products,'total':total})
 
-    
-
-
 @login_required
 def checkout(request):
-    stock=0
     if 'productList' in request.session:
         productList=request.session['productList']
         for product_id in productList:
@@ -59,20 +55,18 @@ def checkout(request):
             if(product.product_quantity>=1):
                 product.product_quantity=product.product_quantity-1
                 product.save()
-                stock=product.product_quantity
+                if product.product_quantity==0:
+                    updateStock(product)
+                
         message="Purchase made,await confirmation email"
         del request.session['productList']   
     
-    return render(request,'checkout.html',{'message':message,'stock':stock})
+    return render(request,'checkout.html',{'message':message})
 
-def clearCart(request):
-    isCheckedOut=request.GET.get('checkout_complete',None)
-    if(isCheckedOut):
-        data={'success':True}
-        return JsonResponse(data)
-    else:
-        data={'success':False}
-        return JsonResponse(data)
+def updateStock(item):
+    stockInfo=StockDetails(product=item)
+    stockInfo.save()
+
 
     
     
