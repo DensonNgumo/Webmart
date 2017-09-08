@@ -1,4 +1,6 @@
 /static/media
 /static/static/images
 /static/static-only/images
+/static/static/js/bootstrap.min.js
+/static/static/js/jquery-3.2.1.js
 db.sqlite3
